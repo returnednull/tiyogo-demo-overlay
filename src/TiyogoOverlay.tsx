@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { FullLogo, IconMark, PhoneIcon } from './assets';
+import { FullLogo, IconMark, MailIcon } from './assets';
 import { configure, setNotes, useOverlayState } from './store';
 import { injectStyles } from './styles';
 import type { OverlayProps } from './types';
@@ -115,7 +115,7 @@ export function TiyogoOverlay(props: OverlayProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <PhoneIcon />
+              <MailIcon />
               {config.contactButtonText}
             </a>
           </div>
@@ -123,25 +123,29 @@ export function TiyogoOverlay(props: OverlayProps) {
       </div>
 
       <div
-        className={`tiyogo-card${open ? ' tiyogo-open' : ''}`}
-        style={{ opacity: mode === 'collapsed' ? config.opacity : 1 }}
+        className="tiyogo-cardwrap"
         onMouseEnter={onEnter}
         onMouseLeave={onLeave}
         onClick={onClick}
-        role="button"
-        tabIndex={0}
-        aria-label="Brought to you by Tiyogo — click for demo details"
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            setMode((m) => (m === 'expanded' ? 'collapsed' : 'expanded'));
-          }
-        }}
       >
-        <span className="tiyogo-heading">{config.heading}</span>
-        <FullLogo className="tiyogo-fulllogo" />
-        <span className="tiyogo-learn">{config.learnMoreText}</span>
-        <IconMark className="tiyogo-mark" />
+        <div
+          className={`tiyogo-card${open ? ' tiyogo-open' : ''}`}
+          style={{ opacity: mode === 'collapsed' ? config.opacity : 1 }}
+          role="button"
+          tabIndex={0}
+          aria-label="Brought to you by Tiyogo — click for demo details"
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setMode((m) => (m === 'expanded' ? 'collapsed' : 'expanded'));
+            }
+          }}
+        >
+          <span className="tiyogo-heading">{config.heading}</span>
+          <FullLogo className="tiyogo-fulllogo" />
+          <span className="tiyogo-learn">{config.learnMoreText}</span>
+          <IconMark className="tiyogo-mark" />
+        </div>
       </div>
     </div>
   );

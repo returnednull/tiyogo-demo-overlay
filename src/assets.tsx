@@ -34,13 +34,17 @@ export function FullLogo(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-/** Minimal phone glyph for the contact button. */
-export function PhoneIcon(props: SVGProps<SVGSVGElement>) {
+/** Minimal envelope glyph for the contact button. */
+export function MailIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" strokeWidth="2" />
       <path
-        d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .58 3.6 1 1 0 0 1-.24 1z"
-        fill="currentColor"
+        d="m4 7.5 6.8 5.1a2 2 0 0 0 2.4 0L20 7.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

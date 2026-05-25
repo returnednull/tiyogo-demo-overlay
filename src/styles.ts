@@ -23,7 +23,7 @@ const CSS = `
 .tiyogo-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:5px 0;border-bottom:1px solid #f0f0f2;}
 .tiyogo-label{font-size:9.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#9ca3af;white-space:nowrap;}
 .tiyogo-value{font-size:12px;font-weight:600;color:#111;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.tiyogo-desc{font-size:11.5px;line-height:1.5;color:#4b5563;margin:10px 0 14px;}
+.tiyogo-desc{font-size:11.5px;line-height:1.5;color:#4b5563;margin:10px 0 14px;white-space:pre-line;}
 .tiyogo-btns{display:flex;flex-direction:column;gap:8px;}
 .tiyogo-btn{display:flex;align-items:center;justify-content:center;gap:8px;height:38px;border-radius:10px;font-size:12.5px;font-weight:600;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:transform .12s ease,filter .15s ease,background .15s ease;}
 .tiyogo-btn:active{transform:scale(.975);}
@@ -33,6 +33,8 @@ const CSS = `
 .tiyogo-btn-secondary:hover{background:#111;color:#fff;}
 .tiyogo-btn svg{width:15px;height:15px;flex:none;}
 
+.tiyogo-cardwrap{position:relative;display:flex;cursor:pointer;}
+.tiyogo-cardwrap::before{content:'';position:absolute;inset:-18px;border-radius:50%;}
 .tiyogo-card{position:relative;background:#fff;color:#000;width:54px;height:54px;max-height:54px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.18),0 1px 3px rgba(0,0,0,.12);transition:width .34s cubic-bezier(.22,1,.36,1),max-height .34s cubic-bezier(.22,1,.36,1),border-radius .3s ease,padding .3s ease,opacity .25s ease,box-shadow .25s ease;will-change:width,max-height;}
 .tiyogo-card.tiyogo-open{width:230px;height:auto;max-height:200px;border-radius:18px;padding:16px;box-shadow:0 10px 34px rgba(0,0,0,.2),0 2px 6px rgba(0,0,0,.1);}
 .tiyogo-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.24),0 2px 5px rgba(0,0,0,.14);}

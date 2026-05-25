@@ -7,18 +7,19 @@ interface State {
 }
 
 export const defaultConfig: OverlayConfig = {
-  position: 'bottom-right',
+  position: 'bottom-left',
   opacity: 0.65,
   heading: 'This demo brought you by:',
   learnMoreText: 'Click here to learn more',
   demoUrl: '',
   firstPublished: '',
   lastUpdated: '',
-  description: '',
+  description:
+    "This demo is prepared as a visual moodboard preview upon our initial discussions. Bugs and missing functionalities are expected, and won't be existed in post-deal production build.\n\nContent and idea here is timestamped, licensed, and copyrighted intellectual property.\n\nTiyogo Ltd © 2026",
   websiteUrl: 'https://tiyogo.com',
   websiteButtonText: 'Visit Our Website',
   contactButtonText: 'Contact Us',
-  contactUrl: 'https://tiyogo.com/contact',
+  contactUrl: 'mailto:contact@tiyogo.com',
   accentColor: '#6a19e2',
 };
 

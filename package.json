@@ -1,6 +1,6 @@
 {
   "name": "@tiyogo/demo-overlay",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Aesthetic, fully customizable \"This demo brought to you by Tiyogo\" overlay badge for React & Next.js demo previews.",
   "type": "module",
   "main": "./dist/index.cjs",

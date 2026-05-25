@@ -6,6 +6,9 @@ import type { OverlayProps } from './types';
 
 type Mode = 'collapsed' | 'hover' | 'expanded';
 
+/** Hover-intent grace period (ms) — debounces edge jitter so it never reaches the animation. */
+const HOVER_DELAY = 200;
+
 const useIsoLayoutEffect =
   typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
@@ -15,6 +18,8 @@ export function TiyogoOverlay(props: OverlayProps) {
   const [host, setHost] = useState('');
   const rootRef = useRef<HTMLDivElement>(null);
   const seeded = useRef(false);
+  const enterTimer = useRef<number | undefined>(undefined);
+  const leaveTimer = useRef<number | undefined>(undefined);
 
   useIsoLayoutEffect(() => {
     injectStyles();
@@ -32,6 +37,10 @@ export function TiyogoOverlay(props: OverlayProps) {
 
   useEffect(() => {
     setHost(window.location.host);
+    return () => {
+      window.clearTimeout(enterTimer.current);
+      window.clearTimeout(leaveTimer.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -55,9 +64,27 @@ export function TiyogoOverlay(props: OverlayProps) {
   const open = mode === 'hover' || mode === 'expanded';
   const demoUrl = config.demoUrl || host;
 
-  const onEnter = () => setMode((m) => (m === 'expanded' ? m : 'hover'));
-  const onLeave = () => setMode((m) => (m === 'expanded' ? m : 'collapsed'));
-  const onClick = () => setMode('expanded');
+  const onEnter = () => {
+    window.clearTimeout(leaveTimer.current);
+    if (mode === 'expanded') return;
+    enterTimer.current = window.setTimeout(
+      () => setMode((m) => (m === 'expanded' ? m : 'hover')),
+      HOVER_DELAY,
+    );
+  };
+  const onLeave = () => {
+    window.clearTimeout(enterTimer.current);
+    if (mode === 'expanded') return;
+    leaveTimer.current = window.setTimeout(
+      () => setMode((m) => (m === 'expanded' ? m : 'collapsed')),
+      HOVER_DELAY,
+    );
+  };
+  const onClick = () => {
+    window.clearTimeout(enterTimer.current);
+    window.clearTimeout(leaveTimer.current);
+    setMode('expanded');
+  };
 
   return (
     <div

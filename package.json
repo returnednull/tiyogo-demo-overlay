@@ -52,6 +52,13 @@
   "author": "Tiyogo (https://tiyogo.com)",
   "license": "MIT",
   "homepage": "https://tiyogo.com",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/returnednull/tiyogo-demo-overlay.git"
+  },
+  "bugs": {
+    "url": "https://github.com/returnednull/tiyogo-demo-overlay/issues"
+  },
   "publishConfig": {
     "access": "public"
   }
